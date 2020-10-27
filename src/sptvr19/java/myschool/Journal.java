@@ -1,15 +1,15 @@
 package sptvr19.java.myschool;
 
+import java.io.Serializable;
 import sptvr19.java.myschool.entity.Person;
-import java.util.Date;
 
-public class Journal {
+public class Journal implements Serializable {
     private Person student;
     private Subject subject;
     private Integer mark;
-    private Date date;
+    private String date;
 
-    public Journal(Person student, Subject subject, Integer mark, Date date) {
+    public Journal(Person student, Subject subject, Integer mark, String date) {
         this.student = student;
         this.subject = subject;
         this.mark = mark;
@@ -28,7 +28,7 @@ public class Journal {
         return mark;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -44,19 +44,15 @@ public class Journal {
         this.mark = mark;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    @Override
-    public String toString() {
-        return "Journal {"
-                + "Student: " + student
-                + ", Subject: " + subject
-                + ", Mark: " + mark
-                + ", Date: " + date
-                + '}';
+    public String toStringByStudent() {
+        return subject.getName() + " / " + mark + " (" + date + ")";
     }
     
-    
+    public String toStringBySubject() {
+        return student.getFirstname() + " " + student.getLastname() + " / " + mark + " (" + date + ")";
+    }   
 }

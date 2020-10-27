@@ -1,8 +1,9 @@
 package sptvr19.java.myschool;
 
+import java.io.Serializable;
 import sptvr19.java.myschool.entity.Person;
 
-public class Subject {
+public class Subject implements Serializable{
     private String name;
     private String duration;
     private Person teacher;

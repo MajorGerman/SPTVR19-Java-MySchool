@@ -22,22 +22,16 @@ public class SubjectManager {
         System.out.print(ANSI_YELLOW + "Input duration (hours): " + ANSI_RESET);
         String subject_duration = scan.nextLine();
         personManager.showList("Teacher", listPersons);
-        for (int i = 0; i < listPersons.size(); i++) {
-            if (listPersons.get(i).getRole() == "Teacher") {
-                while (true) {
-                    System.out.print(ANSI_YELLOW + "\nChoose teacher : " + ANSI_RESET);  
-                    String subject_teacher = scan.nextLine();  
-                    try {
-                        Subject subject = new Subject(subject_name, subject_duration, listPersons.get(Integer.parseInt(subject_teacher)-1));
-                        System.out.println("ASDFDSFSDF");
-                        return subject; 
-                    } catch (Exception e) {
-                        System.out.println(ANSI_RED + " There is no teacher like that! (Input )" + ANSI_RESET);
-                    }
-                }
-            }           
+        while (true) {
+        System.out.print(ANSI_YELLOW + "\nChoose teacher;s ID: " + ANSI_RESET);      
+        String subject_teacher = scan.nextLine();    
+            try {
+                Subject subject = new Subject(subject_name, subject_duration, listPersons.get(Integer.parseInt(subject_teacher)));
+                return subject; 
+            } catch (Exception e) {
+                System.out.println(ANSI_RED + " There is no teacher like that!" + ANSI_RESET);              
+            }       
         }
-        return null;
     }
     
     public void addSubjectToList(Subject subject, List<Subject> listSubjects) {
@@ -47,9 +41,12 @@ public class SubjectManager {
     }
     
     public void showList(List<Subject> listSubjects) {
+        int j = 1;
+        System.out.println("");
         for (int i = 0; i < listSubjects.size(); i++) {
             if (listSubjects.get(i) != null) {
-                System.out.println(ANSI_CYAN + i + ". " + (String)(listSubjects.get(i).toString()) + ANSI_RESET);
+                System.out.println(ANSI_CYAN + j + ". " + (String)(listSubjects.get(i).toString()) + ANSI_RESET);
+                j++;
             }
         }
     }

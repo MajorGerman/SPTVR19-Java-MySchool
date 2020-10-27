@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 import sptvr19.java.myschool.tools.PersonManager;
 import sptvr19.java.myschool.tools.SubjectManager;
+import sptvr19.java.myschool.tools.JournalManager;
 import sptvr19.java.myschool.tools.SaveToFile;
 
 
@@ -28,10 +29,15 @@ class App {
     List<Subject> listSubjects = new ArrayList<>();
     SubjectManager subjectManager = new SubjectManager();  
     
+    List<Journal> listJournals = new ArrayList<>();
+    JournalManager journalManager = new JournalManager();  
+    
     public App() {
         SaveToFile saveToFile = new SaveToFile();
         this.listPersons = saveToFile.loadFromFile("listPersons");
         this.listSubjects = saveToFile.loadFromFile("listSubjects");
+        this.listJournals = saveToFile.loadFromFile("listJournals");
+
     }
     
     public void run() {
@@ -52,9 +58,9 @@ class App {
             System.out.println(ANSI_YELLOW + " 6. Subject List" + ANSI_RESET);
             System.out.println(ANSI_YELLOW + " 7. Add Mark" + ANSI_RESET);
             System.out.println(ANSI_YELLOW + " 8. Change Mark" + ANSI_RESET);
-            System.out.println(ANSI_YELLOW + " 8. Mark List for Student" + ANSI_RESET);
-            System.out.println(ANSI_YELLOW + " 9. Mark List for Subject" + ANSI_RESET);   
-            System.out.println(ANSI_YELLOW + " 10. Exit" + ANSI_RESET);
+            System.out.println(ANSI_YELLOW + " 9. Mark List for Student" + ANSI_RESET);
+            System.out.println(ANSI_YELLOW + " 10. Mark List for Subject" + ANSI_RESET);   
+            System.out.println(ANSI_YELLOW + " 11. Exit" + ANSI_RESET);
                         
             System.out.print(ANSI_YELLOW + "\n> Choose function: " + ANSI_RESET);  
             int function = scan.nextInt();
@@ -98,6 +104,7 @@ class App {
                     System.out.println(ANSI_YELLOW + "\n[ Functions -> Add Subject ]" + ANSI_RESET);                  
                     
                     Subject subject = subjectManager.createSubject(listPersons);  
+                    subjectManager.addSubjectToList(subject, listSubjects);
                     
                     System.out.println(ANSI_GREEN + "Subject has been added successfully!" + ANSI_RESET);
                     
@@ -113,15 +120,33 @@ class App {
                     
                     break;
                 case 7:
+                    System.out.println(ANSI_YELLOW + "\n[ Functions -> Add Mark ]" + ANSI_RESET);
+                    
+                    Journal journal = journalManager.createJournal(listPersons, listSubjects);
+                    journalManager.addJournalToList(journal, listJournals);                   
+                    
+                    System.out.println(ANSI_YELLOW + "--------------------------------" + ANSI_RESET);
                     
                     break;
                 case 8:
-                    
+                    System.out.println(ANSI_YELLOW + "\n[ Functions -> Change Mark ]" + ANSI_RESET);
+                                     
                     break;
                 case 9:
+                    System.out.println(ANSI_YELLOW + "\n[ Functions -> Subject List by Student ]" + ANSI_RESET);
+                    
+                    journalManager.showListByStudent(listPersons, listJournals);
+                    System.out.println(ANSI_YELLOW + "--------------------------------" + ANSI_RESET);
                     
                     break;
                 case 10:
+                    System.out.println(ANSI_YELLOW + "\n[ Functions -> Subject List by Subject ]" + ANSI_RESET);
+                    
+                    journalManager.showListBySubject(listSubjects, listJournals);
+                    System.out.println(ANSI_YELLOW + "--------------------------------" + ANSI_RESET);
+                    
+                    break;
+                case 11:
                     work = false;
                     break;
                 default:

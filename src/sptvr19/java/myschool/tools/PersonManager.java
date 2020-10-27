@@ -30,9 +30,12 @@ public class PersonManager {
     }
     
     public void showList(String role, List<Person> listPersons) {
+        int j = 1;
+        System.out.println("");
         for (int i = 0; i < listPersons.size(); i++) {
             if (listPersons.get(i).getRole().equals(role)) {
-                System.out.println(ANSI_CYAN + i + ". " + (String)(listPersons.get(i).toString()) + ANSI_RESET);
+                System.out.println(ANSI_CYAN + j + ". " + (String)(listPersons.get(i).toString()) + "(ID: " + i + ")" + ANSI_RESET);
+                j++;
             }
         }
     }
