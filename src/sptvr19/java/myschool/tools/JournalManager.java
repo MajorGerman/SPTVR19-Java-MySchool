@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-import sptvr19.java.myschool.Journal;
-import sptvr19.java.myschool.Subject;
+import sptvr19.java.myschool.entity.Journal;
+import sptvr19.java.myschool.entity.Subject;
 import sptvr19.java.myschool.entity.Person;
 
 public class JournalManager {
@@ -82,7 +82,7 @@ public class JournalManager {
         int student_choosed = scan.nextInt();
         System.out.println("");
         int j = 1;
-        for (int i = 0; i < listJournals.size(); i++) {
+        for (int i = 0; i < listJournals.size(); i++) {  
             if (listJournals.get(i).getStudent().equals(listPersons.get(student_choosed))) {
                 System.out.println(ANSI_CYAN + j + ". " + (String)(listJournals.get(i).toStringByStudent()) + ANSI_RESET);
                 j++;
@@ -91,15 +91,19 @@ public class JournalManager {
     }
     
     public void showListBySubject(List<Subject> listSubjects, List<Journal> listJournals) {
-        subjectManager.showList(listSubjects);
-        System.out.print(ANSI_YELLOW + "\nInput subject number: " + ANSI_RESET);
-        int subject_choosed = scan.nextInt();
-        System.out.println("");
-        int j = 1;
-        for (int i = 0; i < listJournals.size(); i++) {
-            if (listJournals.get(i).getSubject().equals(listSubjects.get(subject_choosed))) {
-                System.out.println(ANSI_CYAN + j + ". " + (String)(listJournals.get(i).toStringBySubject()) + ANSI_RESET);
-                j++;
+        if (listSubjects.size() < 1) {
+            System.out.println(ANSI_RED + "There is no any subject!" + ANSI_RESET);
+        } else {           
+            subjectManager.showList(listSubjects);
+            System.out.print(ANSI_YELLOW + "\nInput subject number: " + ANSI_RESET);
+            int subject_choosed = scan.nextInt();
+            System.out.println("");
+            int j = 1;
+            for (int i = 0; i < listJournals.size(); i++) {
+                if (listJournals.get(i).getSubject().getName().equals(listSubjects.get(subject_choosed-1).getName())) {
+                    System.out.println(ANSI_CYAN + j + ". " + (String)(listJournals.get(i).toStringBySubject()) + ANSI_RESET);
+                    j++;
+                }
             }
         }
     }

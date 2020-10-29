@@ -3,7 +3,7 @@ package sptvr19.java.myschool.tools;
 import java.util.List;
 import java.util.Scanner;
 import sptvr19.java.myschool.entity.Person;
-import sptvr19.java.myschool.Subject;
+import sptvr19.java.myschool.entity.Subject;
 
 public class SubjectManager {
     
@@ -23,7 +23,7 @@ public class SubjectManager {
         String subject_duration = scan.nextLine();
         personManager.showList("Teacher", listPersons);
         while (true) {
-        System.out.print(ANSI_YELLOW + "\nChoose teacher;s ID: " + ANSI_RESET);      
+        System.out.print(ANSI_YELLOW + "\nChoose teacher's ID: " + ANSI_RESET);      
         String subject_teacher = scan.nextLine();    
             try {
                 Subject subject = new Subject(subject_name, subject_duration, listPersons.get(Integer.parseInt(subject_teacher)));

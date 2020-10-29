@@ -1,5 +1,7 @@
 package sptvr19.java.myschool;
 
+import sptvr19.java.myschool.entity.Subject;
+import sptvr19.java.myschool.entity.Journal;
 import sptvr19.java.myschool.entity.Person;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +39,6 @@ class App {
         this.listPersons = saveToFile.loadFromFile("listPersons");
         this.listSubjects = saveToFile.loadFromFile("listSubjects");
         this.listJournals = saveToFile.loadFromFile("listJournals");
-
     }
     
     public void run() {
@@ -106,8 +107,7 @@ class App {
                     Subject subject = subjectManager.createSubject(listPersons);  
                     subjectManager.addSubjectToList(subject, listSubjects);
                     
-                    System.out.println(ANSI_GREEN + "Subject has been added successfully!" + ANSI_RESET);
-                    
+                    System.out.println(ANSI_GREEN + "Subject has been added successfully!" + ANSI_RESET);                    
 
                     System.out.println(ANSI_YELLOW + "--------------------------------" + ANSI_RESET);
                     
@@ -130,17 +130,20 @@ class App {
                     break;
                 case 8:
                     System.out.println(ANSI_YELLOW + "\n[ Functions -> Change Mark ]" + ANSI_RESET);
-                                     
+                    
+                    
+                    System.out.println(ANSI_YELLOW + "--------------------------------" + ANSI_RESET); 
+                    
                     break;
                 case 9:
-                    System.out.println(ANSI_YELLOW + "\n[ Functions -> Subject List by Student ]" + ANSI_RESET);
+                    System.out.println(ANSI_YELLOW + "\n[ Functions -> Matk List by Student ]" + ANSI_RESET);
                     
                     journalManager.showListByStudent(listPersons, listJournals);
                     System.out.println(ANSI_YELLOW + "--------------------------------" + ANSI_RESET);
                     
                     break;
                 case 10:
-                    System.out.println(ANSI_YELLOW + "\n[ Functions -> Subject List by Subject ]" + ANSI_RESET);
+                    System.out.println(ANSI_YELLOW + "\n[ Functions -> Mark List by Subject ]" + ANSI_RESET);
                     
                     journalManager.showListBySubject(listSubjects, listJournals);
                     System.out.println(ANSI_YELLOW + "--------------------------------" + ANSI_RESET);

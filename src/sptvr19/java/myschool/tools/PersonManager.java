@@ -9,17 +9,43 @@ public class PersonManager {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_RED = "\u001B[31m";
     
     Scanner scan = new Scanner(System.in);
 
     public Person createPerson(String role) {
-        System.out.print(ANSI_YELLOW + "\nInput name: " + ANSI_RESET);
-        String student_name = scan.nextLine();
-        System.out.print(ANSI_YELLOW + "Input lastname: " + ANSI_RESET);
-        String student_lastname = scan.nextLine();
-        System.out.print(ANSI_YELLOW + "Input phone: " + ANSI_RESET);
-        String student_phone = scan.nextLine();
-        Person person = new Person(student_name, student_lastname, student_phone, role);
+        String name;
+        String lastname;
+        String phone;
+        
+        while (true) {
+            System.out.print(ANSI_YELLOW + "\nInput name: " + ANSI_RESET);
+            name = scan.nextLine();
+            if (name.length() > 0 && name.length() < 41 && !name.matches(" (.*)")) {
+                break;
+            }
+            System.out.println(ANSI_RED + "Incorrect name!" + ANSI_RESET);
+        }
+        
+        while (true) {
+            System.out.print(ANSI_YELLOW + "Input lastname: " + ANSI_RESET);
+            lastname = scan.nextLine();
+            if (lastname.length() > 0  && lastname.length() < 41 && !lastname.matches(" (.*)")) {
+                break;
+            }
+            System.out.println(ANSI_RED + "Incorrect lastname!" + ANSI_RESET);
+        }
+        
+        while (true) {
+            System.out.print(ANSI_YELLOW + "Input phone number: " + ANSI_RESET);
+            phone = scan.nextLine();
+            if (phone.length() > 4  && phone.length() < 41 && !phone.matches(" (.*)")) {
+                break;
+            }
+            System.out.println(ANSI_RED + "Incorrect phone number!" + ANSI_RESET);
+        }
+        
+        Person person = new Person(name, lastname, phone, role);
         return person;               
     }
 
