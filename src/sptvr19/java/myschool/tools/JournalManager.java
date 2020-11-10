@@ -73,7 +73,7 @@ public class JournalManager {
     public void addJournalToList(Journal journal, List<Journal> listJournals) {
         listJournals.add(journal);
         SaveToFile saveToFile = new SaveToFile();
-        saveToFile.saveToFile(listJournals, "listJournals");
+        saveToFile.saveJournalToFile(listJournals);
     }
     
     public void showListByStudent(List<Person> listPersons, List<Journal> listJournals) {

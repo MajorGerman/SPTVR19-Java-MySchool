@@ -52,7 +52,7 @@ public class PersonManager {
     public void addPersonToList(Person student, List<Person> listPersons) {
         listPersons.add(student);
         SaveToFile saveToFile = new SaveToFile();
-        saveToFile.saveToFile(listPersons, "listPersons");
+        saveToFile.savePersonToFile(listPersons);
     }
     
     public void showList(String role, List<Person> listPersons) {

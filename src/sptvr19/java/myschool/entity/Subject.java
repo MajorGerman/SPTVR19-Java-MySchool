@@ -2,8 +2,16 @@ package sptvr19.java.myschool.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Subject implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    
+    private Long Id;
     private String name;
     private String duration;
     private Person teacher;
@@ -12,6 +20,10 @@ public class Subject implements Serializable{
         this.name = name;
         this.duration = duration;
         this.teacher = teacher;
+    }
+    
+    public Subject() {
+        
     }
 
     public String getName() {
@@ -74,6 +86,17 @@ public class Subject implements Serializable{
             return false;
         }
         return true;
-    }  
+    } 
+    
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(long Id) {
+        this.Id = Id;
+    }
+     
+    
     
 }

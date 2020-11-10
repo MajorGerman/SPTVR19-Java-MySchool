@@ -37,7 +37,7 @@ public class SubjectManager {
     public void addSubjectToList(Subject subject, List<Subject> listSubjects) {
         listSubjects.add(subject);
         SaveToFile saveToFile = new SaveToFile();
-        saveToFile.saveToFile(listSubjects, "listSubjects");
+        saveToFile.saveSubjectToFile(listSubjects);
     }
     
     public void showList(List<Subject> listSubjects) {

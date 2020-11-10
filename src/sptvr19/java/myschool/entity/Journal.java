@@ -2,19 +2,30 @@ package sptvr19.java.myschool.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
-import sptvr19.java.myschool.entity.Person;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Journal implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
     private Person student;
     private Subject subject;
     private Integer mark;
     private String date;
-
+    
     public Journal(Person student, Subject subject, Integer mark, String date) {
         this.student = student;
         this.subject = subject;
         this.mark = mark;
         this.date = date;
+    }
+    
+    public Journal() {
+        
     }
 
     public Person getStudent() {
@@ -99,5 +110,16 @@ public class Journal implements Serializable{
         }
         return true;
     }
+    
+    
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(long Id) {
+        this.Id = Id;
+    }
+     
+    
        
 }

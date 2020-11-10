@@ -36,9 +36,9 @@ class App {
     
     public App() {
         SaveToFile saveToFile = new SaveToFile();
-        this.listPersons = saveToFile.loadFromFile("listPersons");
-        this.listSubjects = saveToFile.loadFromFile("listSubjects");
-        this.listJournals = saveToFile.loadFromFile("listJournals");
+        this.listPersons = saveToFile.loadPersonFromFile();
+        this.listSubjects = saveToFile.loadSubjectFromFile();
+        this.listJournals = saveToFile.loadJournalFromFile();
     }
     
     public void run() {
